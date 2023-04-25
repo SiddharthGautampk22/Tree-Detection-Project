@@ -1,0 +1,153 @@
+                            <!-- Working HTML code -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Model</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/styles.css') }}">
+    <link rel="stylesheet" href="D:\Office_DL_model\WebApp\css\styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Tree Detection System</h1>
+    <form method="post" id="model-select" action="/model_selection">
+        <div class="table-group">
+            <table class="table-1">
+                <tr class="heading">
+                    <th>Sl No.</th>
+                    <th>Model Name</th>
+                    <th>Accuracy %</th>
+                    <th>Model Information.</th>
+                </tr>
+                <tr>
+                    <th>1.</th>
+                    <th>Small Model</th>
+                    <th>45%</th>
+                    <th>11 species of trees present : Aloe, Orchid, Palash, Papaya, Amaltash, Coconut, Bargad, Neel Mohar, Mango, Jasmine, Sagwan</th>
+                </tr>
+                <tr>
+                    <th>2.</th>
+                    <th>Smaller Model</th>
+                    <th>71%</th>
+                    <th>7 species of trees present : Aloe, Orchid, Palash, Amaltash, Bargad, Neel Mohar, Jasmine</th>
+                </tr>
+                <tr>
+                    <th>3.</th>
+                    <th>Super Final Model</th>
+                    <th>62.5%</th>
+                    <th>11 species of trees present : Aloe, Orchid, Palash, Amaltas, Coconut, Bargad, Neel Mohar, Mango, Indian Cork Tree, Banana, Acacia</th>
+                </tr>
+                <tr>
+                    <th>4.</th>
+                    <th>New Model</th>
+                    <th>40%</th>
+                    <th>19 species of trees present : Acacia, Aloe, Bamboo, Orchid, Taad, Palash, Papaya, Amaltas, Nimbu/Lemon, Coconut, Bargad, Neel Mohar, Mango, Indian Cork Tree, Banana, Pine tree, Pomegranate/Anar, Willow, Ashoka</th>
+                </tr>
+                <tr>
+                    <th>5.</th>
+                    <th>New Model 1</th>
+                    <th>60%</th>
+                    <th>19 species of trees present : Acacia, Aloe, Bamboo, Orchid, Taad, Palash, Papaya, Amaltas, Nimbu/Lemon, Coconut, Bargad, Neel Mohar, Mango, Indian Cork Tree, Banana, Pine tree, Pomegranate/Anar, Willow, Ashoka</th>
+                </tr>
+            </table>
+        </div> 
+        <div class="selection-group">
+            <label for="model-selection" class="label1">Select one of the mentioned models : </label>
+            <select name="model-info" id="model-info" class="model-info">
+                <option value="">Select a Model</option>
+                <option value="small_model.h5">Small Model</option>
+                <option value="smaller_model.h5">Smaller Model</option>
+                <option value="super_final_model.h5">Super Final Model</option>
+                <option value="new_model.h5">New Model</option>
+                <option value="new_model_1.h5">New Model 1</option>
+            </select>
+            <button type="submit" class="select-btn">Select</button>
+            {% if web_name %}
+            <p class="after-selection">You have selected the {{ web_name }}.</p>
+            {% endif %}
+        </div>
+    </form>
+    <form method="post" enctype="multipart/form-data" id="predict-form">
+        <div class="form-group-img">
+            <label for="image" class="upload-image">Upload an image </label>
+            <input type="file" name="file" class="form-control-file" id="image">
+        </div>
+        <div class="other-option">
+            <p>or</p>
+        </div>
+        <div class="form-group-url" id="reset-form">
+            <label for="url">enter url : </label>
+            <input type="text" name="url" class="form-control" id="url" placeholder="Enter url here">
+        </div>
+        <div class="form-button-group">
+            <button type="submit" class="predict-btn">Predict</button>
+            <input type="reset" class="reset-btn" value="Reset">
+           
+        </div>
+    </form>
+    <div class="predicted-results">
+        <p class="output">Predicted Output</p>
+    </div>
+	
+    <div id="results" class="mt-5"></div>
+</div>
+
+<script>
+    // .ready() initializes a new JQuery object and calls the .ready() func. The code inside the page will execute as soon as the DOM of page has finished loading.
+    $(document).ready(function() {
+        // selects the form element with id = 'predict-form' and attaches a callback function 'submit' to it. This function will be called when the form is submitted.
+        $('#predict-form').submit(function(event) {
+            // Prevents the form from being submitted normally that is on reloading the page or something like that.
+            event.preventDefault();
+            // creates a new Formdata where the 'this' keyword refers to the data which has just been submitted.
+            var formData = new FormData(this);
+            // Starts an AJAX request to the server.
+            $.ajax({
+                type: 'POST',
+                url: '/predict',
+                data: formData,
+                processData: false,
+                contentType: false,
+                // Specifies to call the success function when the AJAX request succeeds.
+                success: function(response) {
+                    // Logs the response to the browser console for debugging purpose.
+                    console.log(response);
+                    // Selects the element in the form with the id = 'results'.
+                    var resultsDiv = $('#results');
+                    // Empties or clears the content present in the the id = 'results'.
+                    resultsDiv.empty();
+                    // $.each function is used to iterate or loop through 'results' property of the response object. For each result the callback function will have 2 arguments i and item. 
+                    $.each(response.results, function(i, item) {
+                        // Used to store the class name and probability to the given variables and then passing them to the <p> paragraph as strings and append it to the resultsDiv element.
+                        var resultString = item.class + ': ' + item.probability.toFixed(2);
+                        var resultP = $('<p>').text(resultString);
+                        resultsDiv.append(resultP);
+                    });
+                    // Checks if the url field has a value present in it or not. If yes, then a new image element is created with the source attribute set to the url.
+                    if ($('#url').val()) {
+                        var img = $('<img>').attr('src', $('#url').val());
+                        resultsDiv.append(img);
+                    // Otherwise a new source attribute is set to the location of the file uploaded as the URL.
+                    } else {
+                        var img = $('<img>').attr('src', URL.createObjectURL(formData.get('file')));
+                        // In botht the cases the image is appended to the resultsDiv attribute.
+                        resultsDiv.append(img);
+                    }
+                },
+                // If the AJAX function fails this part to be called.
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                    alert("Error.")
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

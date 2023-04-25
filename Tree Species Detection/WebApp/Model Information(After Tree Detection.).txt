@@ -1,0 +1,24 @@
+Model Information : -
+1. final_model.h5 : UUID Val = c40f8a42-5e8d-4c88-ba35-bcabff506027.h5
+	Accuracy = 33%
+	Dataset Name = 
+	Species and Trees Present(10) = Mango, Bargad, Papaya, Coconut, Amaltash, Palash, Aloe, Neem, Gulmohar, Mahogany
+2. small_model.h5 : UUID Val = dbaa2c7a-60f5-48ea-9e7a-f74ab44e611f.h5
+	Accuracy = 45%
+	Datase Name = small_dataset(11).xlsx
+	Species and Trees Present(11) = Aloe, Orchid, Palash, Papaya, Amaltash, Coconut, Bargad, Neel Mohar, Mango, Jasmine, Sagwan
+3. smaller_model.h5 : UUID Val = c10683f7-0f6a-4ffe-a827-282b3de3fa87.h5
+	Accuracy = 71%
+	Dataset Name = smaller_dataset.xlsx
+	Species and Trees Present(7) = Aloe, Orchid, Palash, Amaltash, Bargad, Neel Mohar, Jasmine 
+4. super_final_model.h5 : UUID Val = 5d363477-96d2-4b7f-9ce3-4f31b25afd40.h5
+	Accuracy = 62.5%
+	Dataset Name = super_final_dataset.xlsx
+	Species and Trees Present(11) = Aloe, Orchid, Palash, Amaltas, Coconut, Bargad, Neel Mohar, Mango, Indian Cork Tree, Banana, Acacia
+5. new_model.h5 : UUID Val = 3ec9032a-25de-4c19-ac4b-00466fd2ed52.h5
+	- after tuning with hyperparameters and adding one additional convolutional layers
+	Accuray = 40%
+	Species and Trees Present(19) = Acacia, Aloe, Bamboo, Orchid, Taad, Palash, Papaya, Amaltas, Nimbu/Lemon, Coconut, Bargad, Neel Mohar, Mango, Indian Cork Tree, Banana, Pine tree, Pomegranate/Anar, Willow, Ashoka
+6. new_model_1.h5 : UUID Val = 5cf8af2c-a57e-4363-b479-cafc75c8493a.h5
+	Accuracy = 60%
+	Species and Trees Present(19) = Acacia, Aloe, Bamboo, Orchid, Taad, Palash, Papaya, Amaltas, Nimbu/Lemon, Coconut, Bargad, Neel Mohar, Mango, Indian Cork Tree, Banana, Pine tree, Pomegranate/Anar, Willow, Ashoka

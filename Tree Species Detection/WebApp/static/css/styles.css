@@ -1,0 +1,161 @@
+h1{
+    text-align: center;
+   text-decoration: underline ; 
+}
+body{
+    background-color: white;
+}
+table.table-1{
+    text-align: left;
+    width: 100%;
+    border: 1px solid;
+}
+tr.heading{
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+}
+table.table-1,td,th {
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 7px;
+}
+div.table-group{
+    padding-bottom: 10px;
+}
+label.label1{
+    font-size: 25px;
+}
+select.model-info{
+    position: relative;
+    font-family: Arial;
+    width: auto;
+    height: 28px;
+    font-size: 15px;
+}
+div.selection-group{
+    text-align: center;
+}
+.select-btn{
+    background-color: white;
+    border: 2px solid  rgba(18, 178, 226, 0.829);
+    color: black;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.select-btn:hover{
+    background-color: rgba(18, 178, 226, 0.829);
+    color: white;
+}
+.after-selection{
+    font-weight: bold;
+    font-size: large;
+    font-style: italic;
+    padding-right: 120px;
+}
+.form-group-img{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 30px;
+    padding-right: 120px;
+}
+.form-control-file{
+    display: none;
+}
+
+.upload-image{
+    background-color: rgba(18, 178, 226, 0.829);
+    color: black;
+    padding: 5px 40px;
+    border-radius: 4px;
+}
+.upload-image:hover{
+    background-color:  rgba(7, 120, 155, 0.829);
+    color: white;
+}
+.other-option{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 0.5px;
+    padding-right: 120px;
+}
+.form-group-url{
+    text-align: center;
+    padding-left: 15px;
+    font-size: 25px;
+    padding-bottom: 15px;
+    padding-right: 150px;
+    position: relative;
+}
+.form-control{
+    transition: width 0.4s ease-in-out;
+    width : 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('clearicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+.form-control:focus{
+    width: 50%;
+}
+
+.reset-btn{
+    background-color: white;
+    border: 1px solid;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.reset-btn:hover{
+    background-color: #ccc;
+}
+.form-button-group{
+    text-align: center;
+    padding-top: 10px;
+    padding-right: 120px;
+ }
+.predict-btn{
+    background-color:white;
+    border: 2px solid #4CAF50;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.predict-btn:hover{
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+.reset-btn{
+    background-color: white;
+    border: 2px solid red;
+    color: black;
+   padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.reset-btn:hover{
+    background-color: red;
+    font-weight: bold;
+    color: white;
+}
+.predicted-results{
+    text-align: center;
+    font-size: larger;
+    padding-right: 120px;
+    font-weight: bold;
+}
