@@ -68,23 +68,23 @@ def model_selection():
     model = load_model(select)
     if select == "small_model.h5":
         web_name= "Small Model"
-        common_names = pd.read_excel(r'D:\Office_DL_model\small_dataset(10).xlsx')
+        common_names = pd.read_excel(provide the link of where the code is present with file name.)
         class_names = common_names.values.tolist()
     elif select == "smaller_model.h5":
         web_name= "Smaller Model"
-        common_names = pd.read_excel(r'D:\Office_DL_model\WebApp\smaller_dataset.xlsx')
+        common_names = pd.read_excel(provide the link of where the code is present with file name.)
         class_names = common_names.values.tolist()
     elif select == "super_final_model.h5":
         web_name= "Super Final Model"
-        common_names = pd.read_excel(r'D:\Office_DL_model\WebApp\super_final_dataset.xlsx')
+        common_names = pd.read_excel(provide the link of where the code is present with file name.)
         class_names = common_names.values.tolist()
     elif select == "new_model.h5":
         web_name = "New Model"
-        common_names = pd.read_excel(r'D:\Office_DL_model\WebApp\new_dataset.xlsx')
+        common_names = pd.read_excel(provide the link of where the code is present with file name.)
         class_names = common_names.values.tolist()
     else:
         web_name = "New Model 1"
-        common_names = pd.read_excel(r'D:\Office_DL_model\WebApp\new_dataset.xlsx')
+        common_names = pd.read_excel(provide the link of where the code is present with file name.)
         class_names = common_names.values.tolist()
     return render_template('index.html' , web_name=web_name)
 @app.route('/predict', methods=['POST'])
